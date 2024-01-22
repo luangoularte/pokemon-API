@@ -2,6 +2,8 @@ body {
     max-width: fit-content;
     margin: auto;
     font-family: 'Open Sans', sans-serif;
+    background-color: #171810;
+
 }
 
 ol {
@@ -13,3 +15,23 @@ ol {
 li {
     margin-bottom: 10px; 
 }
+
+h1, h2 {
+    color: #fff00f;
+
+}
+
+.paginacao {
+    font-size: 25px;
+    margin-top: 120px;
+    color: #fff;
+    text-align: center;
+}
+
+.paginacao a {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
