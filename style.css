@@ -1,0 +1,15 @@
+body {
+    max-width: fit-content;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+ol {
+    list-style-position: inside; 
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+
+li {
+    margin-bottom: 10px; 
+}
