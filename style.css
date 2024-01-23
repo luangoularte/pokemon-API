@@ -12,6 +12,16 @@ ol {
     align-items: flex-start; 
 }
 
+ol a {
+    text-decoration: none;
+    color: #fff00f;
+}
+
+ol a:hover {
+    color: #fff;
+    transition: 0.5s;
+}
+
 li {
     margin-bottom: 10px; 
 }
@@ -33,5 +43,11 @@ h1, h2 {
     margin-right: 5px;
     margin-left: 5px;
     text-decoration: none;
+
+}
+
+.paginacao a:hover {
+    color:#fff00f;
+    transition: 0.5s;
 }
 

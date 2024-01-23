@@ -2,17 +2,17 @@
 
 $cachePokemon = "pokemons.txt";
 
-$pagina = $_GET["pagina"];
+$pagina = $_GET["pagina"] ?? null;
 
 $limite = 15;
 
 $inicio = ($pagina * $limite) - $limite;
 
+$pokemonNome = isset($_GET["pokemonNome"]);
 
 $url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=$inicio";
 $pokemons = json_decode(file_get_contents($url));
 
-file_put_contents($cachePokemon, var_export($pokemons, true));
 
 
 
@@ -34,6 +34,7 @@ file_put_contents($cachePokemon, var_export($pokemons, true));
 <body>
     <h1>Lista Pokemons:</h1>
     <h2>
+        
         <ol start=<?=$inicio+1?>>
             <?php  
             
@@ -44,9 +45,31 @@ file_put_contents($cachePokemon, var_export($pokemons, true));
             foreach($array1 as $dados){
                 $nome = ucfirst($dados->name);
                     echo "
-                        <li>$nome</li>
+                        <li><a href=\"?pokemonNome=$nome/stat\">$nome</a></li>
                     \n";
                 }
+
+            
+            //if para verificar se array1 ja esta contido em cachePokemon   
+            file_put_contents($cachePokemon, var_export($array1, true), FILE_APPEND);
+
+
+            //endpoint stats
+
+            $pokemonStats = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokemonNome"));
+            
+            if ($pokemonStats) {
+                echo "<h3>Estatísticas de $pokemonNome:</h3>";
+                echo "<ul>";
+                
+                $arrayStats = $pokemonStats->stats;
+
+                foreach ($arrayStats as $stats) {
+                    echo "<li>{$stats->stat->name}: {$stats->base_stat}</li>";
+                }
+                echo "</ul>";
+            
+            }
             ?>
         </ol>
     </h2>
@@ -54,6 +77,7 @@ file_put_contents($cachePokemon, var_export($pokemons, true));
     
     <div class="paginacao">
         
+    
         <a href="?pagina=1">Início</a>
 
         <?php if($pagina>1): ?>
