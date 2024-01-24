@@ -1,6 +1,6 @@
 <?php 
 
-//$cachePokemon = "/home/imply/pokeapi/pokemons.txt";
+
 $cachePokemon =  "pokemons.txt";
 
 $pagina = $_GET["pagina"] ?? null;
@@ -12,11 +12,14 @@ $inicio = ($pagina * $limite) - $limite;
 $pokemonNome = isset($_GET["pokemonNome"]);
 
 $url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=$inicio";
-
-
-$pokemons = json_decode(file_get_contents($url));
-
-
+$pokemons = json_decode(file_get_contents($cachePokemon));
+file_put_contents($cachePokemon, json_encode($pokemons));
+/*if(file_exists($cachePokemon)) {
+    $pokemons = json_decode(file_get_contents($cachePokemon));
+} else {
+    $pokemons = json_decode(file_get_contents($url));
+    file_put_contents($cachePokemon, json_encode($pokemons));
+}*/
 
 ?>
 
@@ -38,9 +41,8 @@ $pokemons = json_decode(file_get_contents($url));
         
         <ol start=<?=$inicio+1?>>
             <?php  
-            
-            $array1 = $pokemons->results;
-            
+        
+            $array1 = $pokemons -> results;
             $array1 = array_slice($array1, $inicio, $limite);
     
             foreach($array1 as $dados){
@@ -49,15 +51,6 @@ $pokemons = json_decode(file_get_contents($url));
                         <li><a href=\"./cad.php?pokemonNome=$nome\">" . ucfirst($nome) . "</a></li>
                     \n";
                 }
-
-            
-            //if para verificar se array1 ja esta contido em cachePokemon
-
-            
-            var_dump($array1);
-            file_put_contents($cachePokemon, var_export($array1['name'], true), FILE_APPEND);
-            
-            //chmod("/home/imply/pokeapi/pokemons.txt", 0750);
 
             
             ?>

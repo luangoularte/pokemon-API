@@ -1,9 +1,9 @@
 <?php 
 
-$cacheStats = "statsPokemons.txt";
+
 
 $pokemonNome = $_GET["pokemonNome"];
-
+$cacheStats = "$pokemonNome.txt";
 $pokemonStats = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokemonNome"));
             
 
@@ -35,8 +35,7 @@ $pokemonStats = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon
                     echo "<li>" . ucfirst($stats->stat->name) . ": $stats->base_stat</li>";
                 }
                 
-                var_dump($arrayStats);
-                file_put_contents($cachePokemon, var_export($arrayStats, true), FILE_APPEND);
+                file_put_contents($cacheStats, var_export($arrayStats, true));
             ?>
         </ul>
     </h2>

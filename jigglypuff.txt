@@ -1,0 +1,62 @@
+array (
+  0 => 
+  (object) array(
+     'base_stat' => 115,
+     'effort' => 2,
+     'stat' => 
+    (object) array(
+       'name' => 'hp',
+       'url' => 'https://pokeapi.co/api/v2/stat/1/',
+    ),
+  ),
+  1 => 
+  (object) array(
+     'base_stat' => 45,
+     'effort' => 0,
+     'stat' => 
+    (object) array(
+       'name' => 'attack',
+       'url' => 'https://pokeapi.co/api/v2/stat/2/',
+    ),
+  ),
+  2 => 
+  (object) array(
+     'base_stat' => 20,
+     'effort' => 0,
+     'stat' => 
+    (object) array(
+       'name' => 'defense',
+       'url' => 'https://pokeapi.co/api/v2/stat/3/',
+    ),
+  ),
+  3 => 
+  (object) array(
+     'base_stat' => 45,
+     'effort' => 0,
+     'stat' => 
+    (object) array(
+       'name' => 'special-attack',
+       'url' => 'https://pokeapi.co/api/v2/stat/4/',
+    ),
+  ),
+  4 => 
+  (object) array(
+     'base_stat' => 25,
+     'effort' => 0,
+     'stat' => 
+    (object) array(
+       'name' => 'special-defense',
+       'url' => 'https://pokeapi.co/api/v2/stat/5/',
+    ),
+  ),
+  5 => 
+  (object) array(
+     'base_stat' => 20,
+     'effort' => 0,
+     'stat' => 
+    (object) array(
+       'name' => 'speed',
+       'url' => 'https://pokeapi.co/api/v2/stat/6/',
+    ),
+  ),
+)
