@@ -3,15 +3,19 @@
 
 
 $pokemonNome = $_GET["pokemonNome"];
-$cacheStats = "$pokemonNome.txt";
+
+$cacheStats = "/$pokemonNome.txt";
 
 
 
 if(!file_exists($cacheStats)){
-    $pokemonStats = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokemonNome", true));
+    $pokemonStats = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokemonNome"));
 } else {
     $pokemonStats = json_decode(file_get_contents($cacheStats));
 }
+
+
+$cacheStats = "$pokemonNome.txt";
 
 
 ?>

@@ -12,11 +12,11 @@ $inicio = ($pagina * $limite) - $limite;
 $pokemonNome = isset($_GET["pokemonNome"]);
 
 $url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=$inicio";
-$pokemons = json_decode(file_get_contents($url))
-
+$pokemons = json_decode(file_get_contents($url));
+file_put_contents($cachePokemon, json_encode($pokemons));
 
 /*if(file_exists($cachePokemon)) {
-    $pokemons = json_decode(file_get_contents($cachePokemon));
+    $pokemons = json_decode(file_get_contents($cachePokemon, true));
 } else {
     $pokemons = json_decode(file_get_contents($url), true)["results"];
     file_put_contents($cachePokemon, json_encode($pokemons));
@@ -43,17 +43,17 @@ $pokemons = json_decode(file_get_contents($url))
         <ol start=<?=$inicio+1?>>
             <?php  
         
-            $array1 = $pokemons -> results;
-            $array1 = array_slice($array1, $inicio, $limite);
+            $arrayPoke = $pokemons -> results;
+            $arrayPoke = array_slice($arrayPoke, $inicio, $limite);
     
-            foreach($array1 as $dados){
+            foreach($arrayPoke as $dados){
                 $nome = $dados->name;
                     echo "
                         <li><a href=\"./cad.php?pokemonNome=$nome\">" . ucfirst($nome) . "</a></li>
                     \n";
                 }
 
-            
+                
             ?>
         </ol>
     </h2>
