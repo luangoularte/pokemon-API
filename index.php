@@ -1,7 +1,7 @@
 <?php 
 
 
-$cachePokemon =  "pokemons.txt";
+$cachePokemon =  "./txt/pokemons.txt";
 
 $pagina = $_GET["pagina"] ?? null;
 
@@ -12,12 +12,13 @@ $inicio = ($pagina * $limite) - $limite;
 $pokemonNome = isset($_GET["pokemonNome"]);
 
 $url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=$inicio";
-$pokemons = json_decode(file_get_contents($cachePokemon));
-file_put_contents($cachePokemon, json_encode($pokemons));
+$pokemons = json_decode(file_get_contents($url))
+
+
 /*if(file_exists($cachePokemon)) {
     $pokemons = json_decode(file_get_contents($cachePokemon));
 } else {
-    $pokemons = json_decode(file_get_contents($url));
+    $pokemons = json_decode(file_get_contents($url), true)["results"];
     file_put_contents($cachePokemon, json_encode($pokemons));
 }*/
 
